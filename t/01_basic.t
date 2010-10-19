@@ -5,9 +5,6 @@ BEGIN { use_ok('CGI::Application::Plugin::DetectAjax'); };
 use lib './t';
 use strict;
 
-use CGI;
-use Test::MockObject;
-use Test::MockObject::Extends;
 
 $ENV{CGI_APP_RETURN_ONLY} = 1;
 
