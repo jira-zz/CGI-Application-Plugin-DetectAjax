@@ -8,6 +8,7 @@ Module::Build->new(
     dist_version_from => 'lib/CGI/Application/Plugin/DetectAjax.pm',
     requires => {
         'CGI::Application' => 0,
+        'Exporter' => 0,
     },
     build_requires    => {
       'Test::More'  => 0,

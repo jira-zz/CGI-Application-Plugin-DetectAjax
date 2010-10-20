@@ -3,14 +3,11 @@ package CGI::Application::Plugin::DetectAjax;
 use strict;
 use vars qw($VERSION @EXPORT);
 
-use CGI::Application ();
-require UNIVERSAL::require;
-
 require Exporter;
 
 @CGI::Application::Plugin::DetectAjax::ISA = qw(Exporter);
 
-$VERSION = '0.05';
+$VERSION = '0.06';
 
 @EXPORT = qw(
   is_ajax
@@ -47,7 +44,11 @@ CGI::Application::Plugin::DetectAjax - check for XMLHttpRequest in CGI::Applicat
 
  package My::App;
 
+ use base qw/CGI::Application/;
+
  use CGI::Application::Plugin::DetectAjax;
+
+ ...
 
  sub myrunmode {
    my $self = shift;
@@ -57,9 +58,12 @@ CGI::Application::Plugin::DetectAjax - check for XMLHttpRequest in CGI::Applicat
    my $result = $object->do_work();
 
    if ($self->is_ajax) {
+
     return to_json($result);
+
    }
    else {
+
      my $t = $self->load_tmpl('myrunmode.tmpl');
 
      $t->param(RESULT => $result);
@@ -72,7 +76,7 @@ CGI::Application::Plugin::DetectAjax - check for XMLHttpRequest in CGI::Applicat
 
 =head1 DESCRIPTION
 
-CGI::Application::Plugin::LogDispatch adds is_ajax method to your L<CGI::Application>
+CGI::Application::Plugin::DetectAjax adds is_ajax method to your L<CGI::Application>
 modules which detects whether the current request was made by XMLHttpRequest.
 
 
